@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "guestName": "Alice",
+    "listingName": "Cozy Apartment Paris",
+    "publicReview": "Great stay, very clean and comfortable!",
+    "reviewCategory": [
+      { "category": "cleanliness", "rating": 9 },
+      { "category": "communication", "rating": 10 },
+      { "category": "respect_house_rules", "rating": 9 }
+    ],
+    "submittedAt": "2024-08-21T22:45:14"
+  },
+  {
+    "id": 2,
+    "guestName": "Bob",
+    "listingName": "Modern Loft London",
+    "publicReview": "Amazing location, will come back!",
+    "reviewCategory": [
+      { "category": "cleanliness", "rating": 8 },
+      { "category": "communication", "rating": 9 },
+      { "category": "respect_house_rules", "rating": 10 }
+    ],
+    "submittedAt": "2024-09-01T10:15:30"
+  }
+]
