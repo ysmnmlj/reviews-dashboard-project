@@ -1,26 +1,50 @@
 [
   {
-    "id": 1,
-    "guestName": "Alice",
-    "listingName": "Cozy Apartment Paris",
-    "publicReview": "Great stay, very clean and comfortable!",
+    "id": 7453,
+    "type": "host-to-guest",
+    "status": "published",
+    "rating": 9,
+    "publicReview": "Shane and family are wonderful! Would definitely host again :)",
     "reviewCategory": [
-      { "category": "cleanliness", "rating": 9 },
-      { "category": "communication", "rating": 10 },
-      { "category": "respect_house_rules", "rating": 9 }
-    ],
-    "submittedAt": "2024-08-21T22:45:14"
-  },
-  {
-    "id": 2,
-    "guestName": "Bob",
-    "listingName": "Modern Loft London",
-    "publicReview": "Amazing location, will come back!",
-    "reviewCategory": [
-      { "category": "cleanliness", "rating": 8 },
+      { "category": "cleanliness", "rating": 10 },
       { "category": "communication", "rating": 9 },
       { "category": "respect_house_rules", "rating": 10 }
     ],
-    "submittedAt": "2024-09-01T10:15:30"
+    "submittedAt": "2020-08-21 22:45:14",
+    "guestName": "Shane Finkelstein",
+    "listingName": "2B N1 A - 29 Shoreditch Heights",
+    "channel": "Airbnb"
+  },
+  {
+    "id": 7454,
+    "type": "guest-to-host",
+    "status": "published",
+    "rating": 7,
+    "publicReview": "Great stay overall, but the WiFi was a bit slow.",
+    "reviewCategory": [
+      { "category": "cleanliness", "rating": 8 },
+      { "category": "communication", "rating": 7 },
+      { "category": "respect_house_rules", "rating": 7 }
+    ],
+    "submittedAt": "2020-09-15 10:20:00",
+    "guestName": "Laura Smith",
+    "listingName": "Flat 12 - Baker Street",
+    "channel": "Booking.com"
+  },
+  {
+    "id": 7455,
+    "type": "host-to-guest",
+    "status": "published",
+    "rating": 10,
+    "publicReview": "Very polite guest, left the apartment spotless!",
+    "reviewCategory": [
+      { "category": "cleanliness", "rating": 10 },
+      { "category": "communication", "rating": 10 },
+      { "category": "respect_house_rules", "rating": 10 }
+    ],
+    "submittedAt": "2020-10-01 16:45:00",
+    "guestName": "Michael Johnson",
+    "listingName": "Modern Loft - Downtown",
+    "channel": "Airbnb"
   }
 ]

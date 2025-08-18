@@ -1,38 +1,14 @@
 import { Router } from "express";
-import fs from "fs";
-import path from "path";
+import { getAllReviews, getReviewById } from "../controllers/reviewsController";
 
 const router = Router();
 
-// Charger le fichier JSON
-const dataPath = path.join(__dirname, "../data/reviews.json");
+// Liste de toutes les reviews
+router.get("/", getAllReviews);
 
-// GET all reviews
-router.get("/", (req, res) => {
-  try {
-    const data = fs.readFileSync(dataPath, "utf-8");
-    const reviews = JSON.parse(data);
-    res.json(reviews);
-  } catch (error) {
-    res.status(500).json({ error: "Unable to read reviews file" });
-  }
-});
+// Une seule review par ID
+router.get("/:id", getReviewById);
 
-// GET a single review by ID
-router.get("/:id", (req, res) => {
-  try {
-    const data = fs.readFileSync(dataPath, "utf-8");
-    const reviews = JSON.parse(data);
-    const review = reviews.find((r: any) => r.id == req.params.id);
 
-    if (!review) {
-      return res.status(404).json({ error: "Review not found" });
-    }
-
-    res.json(review);
-  } catch (error) {
-    res.status(500).json({ error: "Unable to read reviews file" });
-  }
-});
 
 export default router;

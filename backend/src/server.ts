@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import reviewsRouter from "./routes/reviews";
+import googleReviewsRoutes from "./routes/googleReviews";
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
 
 // Routes reviews
 app.use("/api/reviews", reviewsRouter);
+app.use("/api/google-reviews", googleReviewsRoutes);
 
 // Démarrer serveur
 const PORT = 5000;
