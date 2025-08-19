@@ -5,7 +5,7 @@ import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
-export default function SearchBar() {
+export default function SearchBar({ filters, setFilters }: any) {
   const [dateRange, setDateRange] = useState<any>([
     {
       startDate: new Date(),
@@ -23,7 +23,7 @@ export default function SearchBar() {
         <Menu as="div" className="relative flex-1">
           <Menu.Button className="w-full flex items-center justify-between gap-2 px-4 py-2 border rounded-md bg-white">
             <span className="flex items-center gap-2">
-              <MapPinIcon className="w-4 h-4" /> LONDON
+              <MapPinIcon className="w-4 h-4" /> {filters.city || "Select City"}
             </span>
           </Menu.Button>
           <Transition as={Fragment}>
@@ -32,6 +32,7 @@ export default function SearchBar() {
                 <Menu.Item key={city}>
                   {({ active }) => (
                     <button
+                      onClick={() => setFilters({ ...filters, city })}
                       className={`block w-full text-left px-2 py-1 ${
                         active ? "bg-gray-100" : ""
                       }`}
@@ -56,7 +57,14 @@ export default function SearchBar() {
             <Menu.Items className="absolute mt-2 bg-white shadow-lg rounded-md p-4 z-50">
               <DateRange
                 editableDateInputs={true}
-                onChange={(item) => setDateRange([item.selection])}
+                onChange={(item) => {
+                  setDateRange([item.selection]);
+                  setFilters({
+                    ...filters,
+                    startDate: item.selection.startDate,
+                    endDate: item.selection.endDate,
+                  });
+                }}
                 moveRangeOnFirstSelection={false}
                 ranges={dateRange}
                 rangeColors={["#284E4C"]}
@@ -69,17 +77,27 @@ export default function SearchBar() {
         <div className="flex-1 flex items-center justify-between px-4 py-2 border rounded-md bg-white">
           <div className="flex items-center gap-2">
             <UserIcon className="w-4 h-4" />
-            <span>{guests} guest{guests > 1 ? "s" : ""}</span>
+            <span>
+              {guests} guest{guests > 1 ? "s" : ""}
+            </span>
           </div>
           <div className="flex gap-2">
             <button
-              onClick={() => setGuests(Math.max(1, guests - 1))}
+              onClick={() => {
+                const newGuests = Math.max(1, guests - 1);
+                setGuests(newGuests);
+                setFilters({ ...filters, guests: newGuests });
+              }}
               className="px-2 border rounded"
             >
               -
             </button>
             <button
-              onClick={() => setGuests(guests + 1)}
+              onClick={() => {
+                const newGuests = guests + 1;
+                setGuests(newGuests);
+                setFilters({ ...filters, guests: newGuests });
+              }}
               className="px-2 border rounded"
             >
               +
@@ -94,48 +112,59 @@ export default function SearchBar() {
           </Menu.Button>
           <Transition as={Fragment}>
             <Menu.Items className="absolute right-0 mt-2 w-[650px] bg-white shadow-lg rounded-md p-6 z-50">
-              {/* Price Range */}
+              {/* Rating Filter */}
               <div>
-                <label className="font-medium">Price Range (EUR)</label>
-                <input type="range" min="0" max="11700" className="w-full mt-2" />
-                <div className="flex justify-between text-sm text-gray-500">
-                  <span>€0</span> <span>€11700</span>
+                <h4 className="font-medium">Rating</h4>
+                <div className="flex gap-2 mt-2">
+                  {[5, 7, 8, 9, 10].map((r) => (
+                    <button
+                      key={r}
+                      onClick={() => setFilters({ ...filters, rating: r })}
+                      className={`px-3 py-1 border rounded ${
+                        filters.rating === r ? "bg-green-200" : ""
+                      }`}
+                    >
+                      {r}+
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              {/* Bedrooms & Bathrooms */}
-              <div className="grid grid-cols-2 gap-4 mt-4">
-                <div>
-                  <h4 className="font-medium">Bedrooms</h4>
-                  <div className="flex gap-2 mt-2 flex-wrap">
-                    {["Any", 0, 1, 2, 3, "4+"].map((b) => (
-                      <button key={b} className="px-3 py-1 border rounded">{b}</button>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h4 className="font-medium">Bathrooms</h4>
-                  <div className="flex gap-2 mt-2 flex-wrap">
-                    {["Any", 1, 2, 3, "4+"].map((b) => (
-                      <button key={b} className="px-3 py-1 border rounded">{b}</button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Amenities */}
+              {/* Channel Filter */}
               <div className="mt-4">
-                <h4 className="font-medium">Amenities</h4>
-                <div className="grid grid-cols-2 gap-2 mt-2">
-                  <label><input type="checkbox" /> Elevator</label>
-                  <label><input type="checkbox" /> Balcony</label>
-                  <label><input type="checkbox" /> Dishwasher</label>
+                <h4 className="font-medium">Channel</h4>
+                <div className="flex gap-2 mt-2">
+                  {["Airbnb", "Booking.com", "Vrbo"].map((c) => (
+                    <button
+                      key={c}
+                      onClick={() => setFilters({ ...filters, channel: c })}
+                      className={`px-3 py-1 border rounded ${
+                        filters.channel === c ? "bg-green-200" : ""
+                      }`}
+                    >
+                      {c}
+                    </button>
+                  ))}
                 </div>
               </div>
 
               {/* Reset Button */}
               <div className="mt-4 text-right">
-                <button className="text-red-500 text-sm">Reset Filters</button>
+                <button
+                  onClick={() =>
+                    setFilters({
+                      city: null,
+                      startDate: null,
+                      endDate: null,
+                      guests: 1,
+                      rating: null,
+                      channel: null,
+                    })
+                  }
+                  className="text-red-500 text-sm"
+                >
+                  Reset Filters
+                </button>
               </div>
             </Menu.Items>
           </Transition>

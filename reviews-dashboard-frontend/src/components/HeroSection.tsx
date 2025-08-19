@@ -6,7 +6,7 @@ export default function HeroSection() {
       className="relative h-screen w-full bg-cover bg-center flex items-center justify-center"
       style={{
         backgroundImage:
-          "url('https://images.pexels.com/photos/6969996/pexels-photo-6969996.jpeg?_gl=1*gs20av*_ga*MTcyMjc0NjE0MS4xNzU1NDkwNjY2*_ga_8JE65Q40S6*czE3NTU0OTA2NjUkbzEkZzEkdDE3NTU0OTIwNTkkajMwJGwwJGgw')",
+          "url('https://images.pexels.com/photos/7546724/pexels-photo-7546724.jpeg?_gl=1*19xe79q*_ga*MTcyMjc0NjE0MS4xNzU1NDkwNjY2*_ga_8JE65Q40S6*czE3NTU1MzI0MzYkbzIkZzEkdDE3NTU1MzI0MzckajU5JGwwJGgw')",
       }}
     >
       <div className="absolute inset-0 bg-black/40"></div>

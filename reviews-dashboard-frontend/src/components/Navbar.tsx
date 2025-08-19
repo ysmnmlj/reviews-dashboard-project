@@ -1,4 +1,10 @@
-import { Menu, MenuButton, MenuItem, MenuItems, Transition } from "@headlessui/react";
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  Transition,
+} from "@headlessui/react";
 import { Fragment, useState, useEffect } from "react";
 import { Building2, Info, BookOpen, Mail } from "lucide-react";
 import logoDark from "../assets/theFlexlogo.png";
@@ -7,7 +13,7 @@ import logoWhite from "../assets/theFlexlogoWhite.png";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currency, setCurrency] = useState("£ GBP"); 
+  const [currency, setCurrency] = useState("£ GBP");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -23,7 +29,10 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
         <div className="flex justify-between h-20 items-center">
-          <a href="https://theflex.global/" className="flex items-center space-x-2">
+          <a
+            href="https://theflex.global/"
+            className="flex items-center space-x-2"
+          >
             <img
               src={scrolled ? logoWhite : logoDark}
               alt="The Flex"

@@ -18,6 +18,8 @@ export default function Filters({ filters, setFilters }: any) {
         <option value="">All Channels</option>
         <option value="Airbnb">Airbnb</option>
         <option value="Booking.com">Booking.com</option>
+        <option value="vrbo">vrbo</option>
+
         <option value="Google">Google</option>
       </select>
 
