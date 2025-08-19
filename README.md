@@ -55,7 +55,7 @@ cd backend
 npm install
 npm run dev
 
-API Endpoints
+### API Endpoints
 
 Base URL: http://localhost:5000/api
 
@@ -65,7 +65,7 @@ GET /reviews/:id → single review by ID
 
 GET /google-reviews/:placeId → reviews for a Google Place (via RapidAPI)
 
-Normalized Review Format
+### Normalized Review Format
 {
   "id": "12345",
   "listingName": "Google Workplace 6",
@@ -77,13 +77,15 @@ Normalized Review Format
   "date": "2022-05-11T10:00:00Z"
 }
 
-🎨 Frontend
-Start frontend
+## 🎨 Frontend
+### Start frontend
+```bash
+
 cd frontend
 npm install
 npm run dev
 
-Features
+### Features
 
 Manager dashboard to:
 
