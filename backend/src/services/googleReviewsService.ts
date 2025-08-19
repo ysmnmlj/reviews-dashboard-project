@@ -4,7 +4,6 @@ import { GooglePlace, GoogleReview } from "../types/googlePlace";
 const RAPIDAPI_KEY = "b9e32fc1f2msh9800f69ce55a7f3p1ee36bjsn67e0c503c43a";
 const RAPIDAPI_HOST = "google-map-places.p.rapidapi.com";
 
-// === Appel API ===
 export async function getGooglePlaceDetails(placeId: string): Promise<any> {
   const options: AxiosRequestConfig = {
     method: "GET",
@@ -23,7 +22,6 @@ export async function getGooglePlaceDetails(placeId: string): Promise<any> {
   return response.data;
 }
 
-// === Normalisation des reviews ===
 export function normalizeGoogleReviews(apiResponse: any): GoogleReview[] {
   if (!apiResponse?.result?.reviews) return [];
 
@@ -39,7 +37,6 @@ export function normalizeGoogleReviews(apiResponse: any): GoogleReview[] {
   }));
 }
 
-// === Normalisation globale placeDetails ===
 export function normalizePlaceDetails(apiResponse: any): GooglePlace | null {
   if (!apiResponse?.result) return null;
   const place = apiResponse.result;

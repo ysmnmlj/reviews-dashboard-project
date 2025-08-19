@@ -8,20 +8,17 @@ const HOSTAWAY_API = "https://api.hostaway.com/v1";
 const ACCOUNT_ID = "61148";
 const API_KEY =
   "f94377ebbbb479490bb3ec364649168dc443dda2e4830facaf5de2e74ccc9152";
-// Charger reviews depuis fichier mock
 export const getMockReviews = async () => {
   const data = fs.readFileSync(dataPath, "utf-8");
   return JSON.parse(data);
 };
 
-// Récupérer une review par ID depuis le JSON
 export const getReview = async (id: string) => {
   const data = fs.readFileSync(dataPath, "utf-8");
   const reviews = JSON.parse(data);
   return reviews.find((r: any) => r.id == id);
 };
 
-// Exemple de fonction si tu veux appeler l’API Hostaway
 export const fetchFromHostaway = async () => {
   try {
     const response = await axios.get("https://api.hostaway.com/v1/reviews", {

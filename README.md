@@ -47,6 +47,8 @@ reviews-dashboard-project/
 │
 └── README.md
 
+---
+
 ## ⚙️ Backend
 
 ### Start server
@@ -54,8 +56,9 @@ reviews-dashboard-project/
 cd backend
 npm install
 npm run dev
-
-### API Endpoints
+```
+---
+## ⚙️ API EndPoints 
 
 Base URL: http://localhost:5000/api
 
@@ -81,10 +84,10 @@ GET /google-reviews/:placeId → reviews for a Google Place (via RapidAPI)
 ### Start frontend
 ```bash
 
-cd frontend
+cd reviews-dashboard-frontend
 npm install
 npm run dev
-
+```
 ### Features
 
 Manager dashboard to:

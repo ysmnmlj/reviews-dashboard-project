@@ -1,8 +1,14 @@
 import { Request, Response } from "express";
-import { getGooglePlaceDetails, normalizePlaceDetails } from "../services/googleReviewsService";
+import {
+  getGooglePlaceDetails,
+  normalizePlaceDetails,
+} from "../services/googleReviewsService";
 import { normalizeGoogleReviewsForScope } from "../utils/normalizeGoogleReviews";
 
-export async function fetchPlaceReviewsScoped(req: Request, res: Response): Promise<void> {
+export async function fetchPlaceReviewsScoped(
+  req: Request,
+  res: Response
+): Promise<void> {
   const { placeId } = req.params;
 
   try {
@@ -14,7 +20,6 @@ export async function fetchPlaceReviewsScoped(req: Request, res: Response): Prom
       return;
     }
 
-    // Appliquer ta normalisation "scope work"
     const scopedReviews = normalizeGoogleReviewsForScope(
       place.reviews,
       place.placeId,
@@ -24,7 +29,7 @@ export async function fetchPlaceReviewsScoped(req: Request, res: Response): Prom
     res.json({
       listingId: place.placeId,
       listingName: place.name,
-      reviews: scopedReviews
+      reviews: scopedReviews,
     });
   } catch (error) {
     res.status(500).json({ error: "Unable to fetch Google reviews" });
